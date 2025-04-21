@@ -1,0 +1,14 @@
+# Python virtual environment
+logger-venv/
+
+# Python cache files
+__pycache__/
+
+# Python executables
+*.exe
+
+# Activation scripts
+activate
+activate.bat
+Activate.ps1
+deactivate.bat
