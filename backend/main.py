@@ -7,10 +7,10 @@ from datetime import datetime
 
 app = FastAPI()
 
-# Add CORS middleware to allow connections from your React app
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Adjust this in production!
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -25,7 +25,7 @@ async def log_consumer(websocket: WebSocket, queue_name: str):
         async for message in queue_iter:
             async with message.process():
                 log_data = json.loads(message.body.decode())
-                # Format the message to match your React component's expectations
+            
                 response = {
                     "message": log_data.get("message", ""),
                     "level": log_data.get("level", "INFO"),
@@ -33,7 +33,7 @@ async def log_consumer(websocket: WebSocket, queue_name: str):
                 }
                 await websocket.send_text(json.dumps(response))
 
-@app.websocket("/ws-logs")  # Changed to match your React client's URL
+@app.websocket("/ws-logs")  
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     try:
