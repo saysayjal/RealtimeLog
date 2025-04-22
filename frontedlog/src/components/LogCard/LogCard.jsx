@@ -21,7 +21,7 @@ const LogCard = ({ logIndex, logMessage, logLevel }) => {
             </div>) : ''}
 
             {logLevel == 'ERROR' ? (<div className='bg-yellow-300 p-2 w-32 rounded-lg align-center'>
-                CRITICAL
+                ERROR
             </div>) : ''}
 
         </div>

@@ -88,7 +88,6 @@ function App() {
     <>
       <Header />
 
-      {/* Connection Status Panel */}
       <div className="connection-panel p-4 mb-4 bg-gray-100 rounded-lg flex justify-between items-center">
         <div>
           <span className={`inline-block w-3 h-3 rounded-full mr-2 ${isConnected ? 'bg-green-500' : 'bg-red-500'
@@ -117,7 +116,6 @@ function App() {
         </div>
       </div>
 
-      {/* Log Entries */}
       <div className='flex flex-col gap-y-4 max-h-96 overflow-y-scroll items-center'>
         {logEntries.map((logItem) => (
           <LogCard
