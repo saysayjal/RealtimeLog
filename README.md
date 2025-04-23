@@ -13,36 +13,12 @@ A real-time log monitoring system built using FastAPI, RabbitMQ, and WebSocket, 
 
 # Setup Instructions
 - git clone https://github.com/saysayjal/RealtimeLog
-cd Realtimelog
-docker-compose up --build
+- cd Realtimelog
+- docker-compose up --build
 
-# Folder Structure
-Realtimelog/
-│
-├── backend/
-│   ├── app/
-│   ├── consumer.py
-│   ├── main.py
-│   ├── producer.py
-│   ├── Dockerfile
-│   ├── requirements.txt
-│
-├── frontedlog/
-│   ├── public/
-│   ├── src/
-│   │   ├── assets/
-│   │   ├── components/
-│   │   │   ├── Header/
-│   │   │   └── LogCard/
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   ├── Dockerfile
-│   ├── index.html
-│   ├── package.json
-│   ├── vite.config.js
-│
-├── docker-compose.yml
-└── README.md
+- 
+
+
 
 # TODOs (for Future Improvements)
 - Add WebSocket authentication 
