@@ -44,7 +44,7 @@ def produce_logs():
     connection = pika.BlockingConnection(
         pika.ConnectionParameters(
             host=rabbitmq_host,
-            port=5672,  # explicit port
+            port=5672,  
             heartbeat=600,
             blocked_connection_timeout=300
         )

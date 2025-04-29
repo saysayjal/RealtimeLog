@@ -8,10 +8,10 @@ from datetime import datetime
 
 app = FastAPI()
 
-# Add CORS middleware to allow connections from your React app
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Adjust this in production!
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -21,7 +21,7 @@ async def log_consumer(websocket: WebSocket, queue_name: str):
     connection = None
     try:
         rabbitmq_host = os.getenv("RABBITMQ_HOST", "rabbitmq")
-        rabbitmq_port = int(os.getenv("RABBITMQ_PORT", "5672"))  # Convert to int
+        rabbitmq_port = int(os.getenv("RABBITMQ_PORT", "5672"))  
         rabbitmq_user = os.getenv("RABBITMQ_USER", "guest")
         rabbitmq_pass = os.getenv("RABBITMQ_PASSWORD", "guest")
         
@@ -38,7 +38,7 @@ async def log_consumer(websocket: WebSocket, queue_name: str):
                 try:
                     async with message.process():
                         log_data = json.loads(message.body.decode())
-                        # Format the message to match your React component's expectations
+                       
                         response = {
                             "message": log_data.get("message", ""),
                             "level": log_data.get("level", "INFO"),
@@ -58,7 +58,7 @@ async def log_consumer(websocket: WebSocket, queue_name: str):
         if connection:
             await connection.close()
 
-@app.websocket("/ws-logs")  # Changed to match your React client's URL
+@app.websocket("/ws-logs")  
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     try:
@@ -70,7 +70,7 @@ async def websocket_endpoint(websocket: WebSocket):
                 break
             except Exception as e:
                 print(f"Connection error, reconnecting: {e}")
-                await asyncio.sleep(5)  # Wait before reconnecting
+                await asyncio.sleep(5)  
     except Exception as e:
         print(f"WebSocket error: {e}")
     finally:
